@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker-compose -f docker-compose-CeleryExecutor.yml up
+docker-compose up
