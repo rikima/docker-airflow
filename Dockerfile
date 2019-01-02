@@ -75,6 +75,9 @@ COPY script/entrypoint.sh /entrypoint.sh
 COPY config/airflow.cfg ${AIRFLOW_HOME}/airflow.cfg
 COPY config/set_user.py ${AIRFLOW_HOME}/set_user.py
 
+RUN mkdir ${AIRFLOW_HOME}/dags
+RUN mkdir ${AIRFLOW_HOME}/plugins
+
 RUN chown -R airflow: ${AIRFLOW_HOME}
 
 EXPOSE 8080 5555 8793
