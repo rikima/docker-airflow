@@ -1,4 +1,4 @@
-version: '2.1'
+version: '2.0'
 services:
     redis:
         image: 'redis:3.2.7'
@@ -22,7 +22,7 @@ services:
             - postgres
             - redis
         environment:
-            - LOAD_EX=n
+            - LOAD_EX=y
             - FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
             - EXECUTOR=Celery
             # - POSTGRES_USER=airflow
@@ -36,11 +36,6 @@ services:
         ports:
             - "8080:8080"
         command: webserver
-        healthcheck:
-            test: ["CMD-SHELL", "[ -f /usr/local/airflow/airflow-webserver.pid ]"]
-            interval: 30s
-            timeout: 30s
-            retries: 3
 
     flower:
         image: puckel/docker-airflow:1.10.1
@@ -64,7 +59,7 @@ services:
             # Uncomment to include custom plugins
             # - ./plugins:/usr/local/airflow/plugins
         environment:
-            - LOAD_EX=n
+            - LOAD_EX=y
             - FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
             - EXECUTOR=Celery
             # - POSTGRES_USER=airflow

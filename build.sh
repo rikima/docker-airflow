@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker build -t my-airflow . 
+docker pull puckel/docker-airflow
