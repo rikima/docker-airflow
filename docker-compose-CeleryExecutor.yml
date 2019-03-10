@@ -11,12 +11,12 @@ services:
             - POSTGRES_PASSWORD=airflow
             - POSTGRES_DB=airflow
         # Uncomment these lines to persist data on the local filesystem.
-        #     - PGDATA=/var/lib/postgresql/data/pgdata
-        # volumes:
-        #     - ./pgdata:/var/lib/postgresql/data/pgdata
+            - PGDATA=/var/lib/postgresql/data/pgdata
+        volumes:
+            - ./pgdata:/var/lib/postgresql/data/pgdata
 
     webserver:
-        image: my-airflow
+        image: puckel/docker-airflow:1.10.1
         restart: always
         depends_on:
             - postgres
@@ -43,7 +43,7 @@ services:
             retries: 3
 
     flower:
-        image: my-airflow
+        image: puckel/docker-airflow:1.10.1
         restart: always
         depends_on:
             - redis
@@ -55,7 +55,7 @@ services:
         command: flower
 
     scheduler:
-        image: my-airflow
+        image: puckel/docker-airflow:1.10.1
         restart: always
         depends_on:
             - webserver
@@ -74,7 +74,7 @@ services:
         command: scheduler
 
     worker:
-        image: my-airflow
+        image: puckel/docker-airflow:1.10.1
         restart: always
         depends_on:
             - scheduler
