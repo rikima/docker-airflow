@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker exec -it webserver bash
+docker-compose run webserver bash
