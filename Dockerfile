@@ -56,8 +56,8 @@ RUN set -ex \
     && pip install pyOpenSSL \
     && pip install ndg-httpsclient \
     && pip install pyasn1 \
-    && pip install apache-airflow[all]==${AIRFLOW_VERSION} \
-    && pip install 'redis>=2.10.5,<3' \
+    && pip install apache-airflow[async,devel,jdbc,hdfs,hive,ldap,mysql,postgres,celery,redis,s3,ssh]==${AIRFLOW_VERSION} \
+    && pip install 'redis==3.2' \
     && pip install flask_bcrypt \
     && if [ -n "${PYTHON_DEPS}" ]; then pip install ${PYTHON_DEPS}; fi \
     && apt-get purge --auto-remove -yqq $buildDeps \
